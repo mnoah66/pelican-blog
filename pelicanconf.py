@@ -22,7 +22,7 @@ THEME = 'C:/Users/mnoah/MartinBlog/themes/pelican-themes/pelican-bootstrap3'
 
 DEFAULT_LANG = 'English'
 
-ABOUT_ME = "Random blog posts relative to Python, Excel, Web Development, and the Raspberry Pi."
+ABOUT_ME = "Random blogs about Python, Excel, Web Development, and maybe some hockey (Go Pens!)"
 AVATAR = 'images/FuEA2MYH_400x400.jpg'
 
 # Feed generation is usually not desired when developing
