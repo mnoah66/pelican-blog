@@ -1417,7 +1417,7 @@ a {
 
 a:focus,
 a:hover {
-    color: #23527c;
+    color: #FFFFFF;
     text-decoration: underline
 }
 
@@ -1695,7 +1695,7 @@ mark {
 }
 
 a.text-primary:hover {
-    color: #286090
+    color: #FFFFFF
 }
 
 .text-success {
@@ -5275,7 +5275,7 @@ textarea.input-group-sm>.input-group-btn>.btn {
 }
 
 .navbar-default .navbar-brand {
-    color: #777
+    color: #FFFFFF
 }
 
 .navbar-default .navbar-brand:focus,
@@ -5285,11 +5285,11 @@ textarea.input-group-sm>.input-group-btn>.btn {
 }
 
 .navbar-default .navbar-text {
-    color: #777
+    color: #FFFFFF
 }
 
 .navbar-default .navbar-nav>li>a {
-    color: #777
+    color: #FFFFFF
 }
 
 .navbar-default .navbar-nav>li>a:focus,
