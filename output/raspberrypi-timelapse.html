@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="english" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Raspberry Pi Timelapse - MartinNoah</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/raspberrypi-timelapse.html">
+
+        <meta name="author" content="Martin Noah" />
+        <meta name="keywords" content="timelapse,ffmpeg,raspberrypi,python" />
+        <meta name="description" content="What can&#39;t the Pi Do? The beauty of the Raspberry Pi is the millions of things you&#39;re able to do with it. From a custom DIY webserver to a home surveillance system, from physical computing to the topic of this post: timelapse photography. I became interested in the Raspberry Pi …" />
+
+        <meta property="og:site_name" content="MartinNoah" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Raspberry Pi Timelapse"/>
+        <meta property="og:url" content="/raspberrypi-timelapse.html"/>
+        <meta property="og:description" content="What can&#39;t the Pi Do? The beauty of the Raspberry Pi is the millions of things you&#39;re able to do with it. From a custom DIY webserver to a home surveillance system, from physical computing to the topic of this post: timelapse photography. I became interested in the Raspberry Pi …"/>
+        <meta property="article:published_time" content="2018-05-07" />
+            <meta property="article:section" content="Blog" />
+            <meta property="article:tag" content="timelapse" />
+            <meta property="article:tag" content="ffmpeg" />
+            <meta property="article:tag" content="raspberrypi" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:author" content="Martin Noah" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="MartinNoah ATOM Feed"/>
+
+
+
+        <link href="/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
+              title="MartinNoah Blog ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+MartinNoah            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="/pages/about.html">
+                             About
+                          </a></li>
+                         <li><a href="/pages/contact.html">
+                             Contact
+                          </a></li>
+                        <li class="active">
+                            <a href="/category/blog.html">Blog</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/raspberrypi-timelapse.html"
+                       rel="bookmark"
+                       title="Permalink to Raspberry Pi Timelapse">
+                        Raspberry Pi Timelapse
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2018-05-07T00:00:00-04:00"> Mon 07 May 2018</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/timelapse.html">timelapse</a>
+        /
+	<a href="/tag/ffmpeg.html">ffmpeg</a>
+        /
+	<a href="/tag/raspberrypi.html">raspberrypi</a>
+        /
+	<a href="/tag/python.html">python</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h1>What can't the Pi Do?</h1>
+<p>The beauty of the Raspberry Pi is the millions of things you're able to do with it.  From a custom DIY webserver to a home surveillance system, from physical computing to the topic of this post: timelapse photography.  I became interested in the Raspberry Pi when it came time to purchase my home.  I wanted a DIY home surveillance system without exorbitant subscription costs or contracts, and the ability to fully customize it in any way I wanted.  .  I came across <a href="https://pyimagesearch.com"><strong>PyImageSearch</strong></a> and the amazing collection of tutorials (<a href="https://www.pyimagesearch.com/2015/06/01/home-surveillance-and-motion-detection-with-the-raspberry-pi-python-and-opencv/">this one in particular</a>)</p>
+<p>That was my introduction to the Raspberry Pi and it's camera module, and the timelapse idea came from a construction project next to my employer's office space.  Creating a timelapse with the Raspberry Pi is incredibly simple, and you don't need 100's of dollars worth of equipment. </p>
+<h2>Items Required</h2>
+<ul>
+<li><a href="https://www.amazon.com/CanaKit-Raspberry-Power-Supply-Listed/dp/B07BC6WH7V/ref=sr_1_3?s=pc&amp;ie=UTF8&amp;qid=1525737615&amp;sr=1-3&amp;keywords=raspberry+pi+3+b%2B&amp;dpID=51IC7SDI3cL&amp;preST=_SY300_QL70_&amp;dpSrc=srch">Raspberry Pi (duh!).  I purchase the kit which includes two heat sinks and the power supply</a></li>
+<li><a href="https://www.amazon.com/Raspberry-Pi-Camera-Module-Megapixel/dp/B01ER2SKFS/ref=sr_1_3?ie=UTF8&amp;qid=1525737711&amp;sr=8-3&amp;keywords=pi+camera&amp;dpID=41oaX6czzQL&amp;preST=_SY300_QL70_&amp;dpSrc=srch">Raspberry Pi Camera</a></li>
+</ul>
+<h2>Considerations</h2>
+<p>Once you have your Pi up and running and the camera tested and working, it's time to code your time lapse program.  Depending on your subject, you want to consider a few things before beginning your timelapse project.</p>
+<ol>
+<li><strong>Frequency of pictures:</strong> are you doing a time lapse of a 12 month construction project?  Snow melting and the leaves turning green? Or just some general foot traffic of humans in a park?  For each scenario, you need to decide how many pictures to take a [minute, hour, day, etc.].  <a href="https://www.photopills.com/calculators/timelapse">This</a> timelapse calculator can help you decide how many pictures to take, considering also the filesize and length of your timelapse.  Be mindful of your audience, and that a two minute timelapse can have the same wow factor has a five minute one.</li>
+<li><strong>File size and memory:</strong> If you use generic settings with your camera and you only have an 8gb or 16gb SD card, you may run into storage issues if you take a lot of pictures.  For this project, I used a 128gb SD card, which had to be formatted in a particular way to work on the Raspberry Pi (https://www.raspberrypi.org/documentation/installation/sdxc_formatting.md).</li>
+<li><strong>Backups:</strong> You may want to backup your images on an hourly/daily/weekly basis.  I've come across enough ocmments on the web about SD cards failing in the Raspberry Pi, and you certainly don't want a failure for something like this.  For this project, all images are saved locally to the SD card of the Pi, but also uploaded to my Dropbox account via the <a href="https://www.dropbox.com/developers/documentation/python">Dropbox Python API</a>.  Of course, a free plan may not give you enough memory, but I happily started paying for Dropbox (1TB) a few years ago and have <em>never</em> regretted it.</li>
+<li><strong>Notification:</strong> Will you be checking in with the progress of the timelapse every day?  If not, you may want to be notified when/if problems have occurred--mainly if the camera is taking pictures or not.  With Twilio SMS, you can add text message notification when the program has started and stopped taking pictures.  If on any given day you don't recieve the text, you'll know something's up and you should check things out.</li>
+</ol>
+<h3>Setup</h3>
+<p>OK, so you've decided you want to take one picture every 30 minutes, only during day time hours.  Let's start with our Python code broken up into chunks here with some comments. The full code in its entirety is at the end.</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1"># Camera.py</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">picamera</span> <span class="kn">import</span> <span class="n">PiCamera</span>
+<span class="kn">import</span> <span class="nn">dropbox</span>
+<span class="kn">from</span> <span class="nn">twilio.rest</span> <span class="kn">import</span> <span class="n">Client</span>
+</pre></div>
+
+
+<p>You'll need to install the dropbox and twilio modules with <code>pip install dropbox twilio</code> and import them accordingly. </p>
+<div class="highlight"><pre><span></span><span class="n">twilio_id</span> <span class="o">=</span> <span class="s2">&quot;YOUR_TWILIO_ID&quot;</span>
+<span class="n">twilio_auth_token</span> <span class="o">=</span> <span class="s2">&quot;YOUR_TWILIO_AUTH_TOKEN&quot;</span>
+
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">twilio_id</span><span class="p">,</span> <span class="n">twilio_auth_token</span><span class="p">)</span>
+  <span class="n">client</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+      <span class="n">to</span><span class="o">=</span><span class="s2">&quot;+RECIPIENT&quot;</span><span class="p">,</span>
+      <span class="n">from_</span><span class="o">=</span><span class="s2">&quot;+YOUR_TWILIO_NUMBER&quot;</span><span class="p">,</span>
+      <span class="n">body</span><span class="o">=</span><span class="s2">&quot;Time Lapse has begun!&quot;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="k">pass</span>
+</pre></div>
+
+
+<p>The above will send you a "Time Lapse has begun" text message at the beginning of the program.  This is a one time notification and we throw it in the try/except - pass block.  In case that piece doesn't work, it won't compromise the rest of your code.  If you don't plan to use the Twilio SMS notification, simply remove the entire lines above.  If cost is a </p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<div id="aboutme">
+        <p>
+            <img width="100%" class="img-thumbnail" src="/images/FuEA2MYH_400x400.jpg"/>
+        </p>
+    <p>
+      <strong>About Martin Noah</strong><br/>
+        Random blogs about Python, Excel, Web Development, and maybe some hockey (Go Pens!)
+    </p>
+</div><!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://twitter.com/MixMasterMartin"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+    <li class="list-group-item"><a href="https://www.facebook.com/martin.noah.98"><i class="fa fa-facebook-square fa-lg"></i> Facebook</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://getpelican.com/" target="_blank">Pelican</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.org/" target="_blank">Python.org</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2018 Martin Noah
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-118771828-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+
+</body>
+</html>
