@@ -1,4 +1,4 @@
 Title: About
 
-I enjoy geeking out with Excel, Python, web dev, and all things in between.  <b>Hello in bold!</b>  By profession I am an administrator for a non-profit organization.
+This blog is mostly about myself and programming.  Topics include tutorials and/or blogs on Python, Excel/VBA, the Raspberry Pi, web development, and everything in between.
 

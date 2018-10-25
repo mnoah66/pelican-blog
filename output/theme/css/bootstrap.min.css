@@ -7,11 +7,15 @@
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
+
+
 html {
     font-family: sans-serif;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%
 }
+
+
 
 body {
     margin: 0
@@ -1400,6 +1404,8 @@ body {
     color: #333;
     background-color: #fff
 }
+
+
 
 button,
 input,
@@ -5270,17 +5276,17 @@ textarea.input-group-sm>.input-group-btn>.btn {
 }
 
 .navbar-default {
-    background-color: #222222;
+    background-color: #808080;
     border-color: #e7e7e7
 }
 
 .navbar-default .navbar-brand {
-    color: #FFFFFF
+    color: #222222
 }
 
 .navbar-default .navbar-brand:focus,
 .navbar-default .navbar-brand:hover {
-    color: #5e5e5e;
+    color: #ddd;
     background-color: transparent
 }
 
@@ -5289,12 +5295,12 @@ textarea.input-group-sm>.input-group-btn>.btn {
 }
 
 .navbar-default .navbar-nav>li>a {
-    color: #FFFFFF
+    color: #222222
 }
 
 .navbar-default .navbar-nav>li>a:focus,
 .navbar-default .navbar-nav>li>a:hover {
-    color: #333;
+    color: #ddd;
     background-color: transparent
 }
 
@@ -5322,7 +5328,7 @@ textarea.input-group-sm>.input-group-btn>.btn {
 }
 
 .navbar-default .navbar-toggle .icon-bar {
-    background-color: #888
+    background-color: #ddd
 }
 
 .navbar-default .navbar-collapse,
@@ -5416,7 +5422,7 @@ fieldset[disabled] .navbar-default .btn-link:hover {
 .navbar-inverse .navbar-nav>.active>a,
 .navbar-inverse .navbar-nav>.active>a:focus,
 .navbar-inverse .navbar-nav>.active>a:hover {
-    color: #fff;
+    color: #ddd;
     background-color: #080808
 }
 
@@ -5448,7 +5454,7 @@ fieldset[disabled] .navbar-default .btn-link:hover {
 .navbar-inverse .navbar-nav>.open>a,
 .navbar-inverse .navbar-nav>.open>a:focus,
 .navbar-inverse .navbar-nav>.open>a:hover {
-    color: #fff;
+    color: #222222;
     background-color: #080808
 }
 
