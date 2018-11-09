@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="english" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-
     <title>Contact - Martin Noah</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,36 +8,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link href="https://martinnoah.com/images/favicon.png" rel="icon">
 
-<link rel="canonical" href="https://martinnoah.com/pages/contact.html">
+<link rel="canonical" href="../pages/contact.html">
 
         <meta name="author" content="Martin Noah" />
-        <meta name="description" content="If you&#39;d like to get in touch with me, check me out on Twitter or shoot me a message: mnoah66 at g mail dot com" />
+        <meta name="description" content="If you&#39;d like to get in touch with me, check me out on Twitter or shoot me a message: Name Email address Your email is safe with me! Message Send $(&#39;#myForm&#39;).submit(function(e){ $(&#39;#exampleModal&#39;).modal(&#39;show&#39;); e.preventDefault(); $.ajax({ url:&#34;https://purring-dodo.prod.with-datafire.io/contact&#34;, type:&#39;post&#39;, data …" />
 
     <meta property="og:site_name" content="Martin Noah" />
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Contact"/>
-    <meta property="og:url" content="https://martinnoah.com/pages/contact.html"/>
-    <meta property="og:description" content="If you&#39;d like to get in touch with me, check me out on Twitter or shoot me a message: mnoah66 at g mail dot com" />
+    <meta property="og:url" content="../pages/contact.html"/>
+    <meta property="og:description" content="If you&#39;d like to get in touch with me, check me out on Twitter or shoot me a message: Name Email address Your email is safe with me! Message Send $(&#39;#myForm&#39;).submit(function(e){ $(&#39;#exampleModal&#39;).modal(&#39;show&#39;); e.preventDefault(); $.ajax({ url:&#34;https://purring-dodo.prod.with-datafire.io/contact&#34;, type:&#39;post&#39;, data …" />
         <meta property="og:image"
-              content="https://martinnoah.com/images/FuEA2MYH_400x400.jpg"/>
+              content="../images/FuEA2MYH_400x400.jpg"/>
 
     <meta name="twitter:dnt" content="on">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:domain" content="https://martinnoah.com">
+    <meta name="twitter:domain" content="..">
             <meta property="twitter:image"
-                  content="https://martinnoah.com/images/FuEA2MYH_400x400.jpg"/>
+                  content="../images/FuEA2MYH_400x400.jpg"/>
 
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://martinnoah.com/theme/css/bootstrap.min.css" type="text/css"/>
-    <link href="https://martinnoah.com/theme/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="../theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="https://martinnoah.com/theme/css/pygments/native.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://martinnoah.com/theme/css/style.css" type="text/css"/>
-
-
+    <link href="../theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="../theme/css/style.css" type="text/css"/>
 
 
 
@@ -56,19 +52,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="https://martinnoah.com/" class="navbar-brand">
-<img class="img-responsive pull-left gap-right" src="https://martinnoah.com/images/favicon.png" width="32"/> Martin Noah            </a>
+            <a href="../" class="navbar-brand">
+Martin Noah            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                         <li><a href="https://martinnoah.com/pages/about.html">
+                         <li><a href="../pages/about.html">
                              About
                           </a></li>
-                         <li class="active"><a href="https://martinnoah.com/pages/contact.html">
+                         <li class="active"><a href="../pages/contact.html">
                              Contact
                           </a></li>
                         <li >
-                            <a href="https://martinnoah.com/category/blog.html">Blog</a>
+                            <a href="../category/blog.html">Blog</a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -89,14 +85,54 @@
         <h1 class="entry-title">Contact</h1>
         
         <div class="entry-content">
-            <p>If you'd like to get in touch with me, check me out on <a href="https://twitter.com/MixMasterMartin">Twitter</a> or shoot me a message: mnoah66 at g mail dot com</p>
+            <p>If you'd like to get in touch with me, check me out on <a href="https://twitter.com/MixMasterMartin">Twitter</a> or shoot me a message:</p>
+<form id="myForm">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Name</label>
+                        <input required type="text" class="form-control" id="fromName" placeholder="Enter name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="fromEmail" aria-describedby="emailHelp" placeholder="Enter email" name="emailAddress" required>
+                        <small id="emailHelp" class="form-text text-muted">Your email is safe with me!</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Message</label>
+                        <textarea required class="form-control" id="fromMessage" rows="3" name="message"></textarea>
+                    <input type="text" name="_gotcha" style="display:none" />
+                    <input type="hidden" name="_next" value="https://martindnoah.com/index.html" />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-lg" type="submit">Send</button>
+                </div>
+            </form>
+
+<script type="text/javascript">
+        $('#myForm').submit(function(e){
+            $('#exampleModal').modal('show');
+            e.preventDefault();
+            $.ajax({
+                url:"https://purring-dodo.prod.with-datafire.io/contact",
+                type:'post',
+                data:$('#myForm').serialize(),
+                success:function(){
+                    $('#myForm :input').val('');
+                    //whatever you wanna do after the form is successfully submitted
+                }
+            });
+        });
+    </script>
         </div>
     </section>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
-                
-<!-- Sidebar -->
+<div id="aboutme">
+    <p>
+      <strong>About Martin Noah</strong><br/>
+        Random tutorials and blog posts about Python, Excel, Web Development, and maybe some hockey (Go Pens!)
+    </p>
+</div><!-- Sidebar -->
 <section class="well well-sm">
   <ul class="list-group list-group-flush">
 
@@ -109,14 +145,71 @@
   </ul>
 </li>
 <!-- End Sidebar/Social -->
+
+<!-- Sidebar/Tag Cloud -->
+<li class="list-group-item">
+  <a href="../"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+  <ul class="list-group " id="tags">
+    <li class="list-group-item tag-0">
+      <a href="../tag/python.html">python</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="../tag/raspberrypi.html">raspberrypi</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="../tag/blog.html">blog</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/surveillance.html">surveillance</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/ngrok.html">ngrok</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/pandas.html">pandas</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/excel.html">Excel</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/telegram.html">telegram</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/ffmpeg.html">ffmpeg</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/vba.html">vba</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/pelican.html">pelican</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/timelapse.html">timelapse</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/automation.html">automation</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/twilio.html">Twilio</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/pythonanywhere.html">pythonanywhere</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/googlemaps.html">googlemaps</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/windows.html">windows</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/dataframe.html">dataframe</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Tag Cloud -->
   </ul>
 </section>
-<!-- End Sidebar --><div id="aboutme">
-    <p>
-      <strong>About Martin Noah</strong><br/>
-        Random tutorials and blog posts about Python, Excel, Web Development, and maybe some hockey (Go Pens!)
-    </p>
-</div>            </aside>
+<!-- End Sidebar -->            </aside>
         </div>
     </div>
 </div>
@@ -134,13 +227,13 @@
       </div>
    </div>
 </footer>
-<script src="https://martinnoah.com/theme/js/jquery.min.js"></script>
+<script src="../theme/js/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://martinnoah.com/theme/js/bootstrap.min.js"></script>
+<script src="../theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="https://martinnoah.com/theme/js/respond.min.js"></script>
+<script src="../theme/js/respond.min.js"></script>
 
 
     <!-- Disqus -->

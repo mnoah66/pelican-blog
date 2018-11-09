@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="english" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Creating a Mileage Matrix - Martin Noah</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="./creating-a-mileage-matrix.html">
+
+        <meta name="author" content="Martin Noah" />
+        <meta name="keywords" content="python,googlemaps,pandas,dataframe" />
+        <meta name="description" content="Creating a mileage matrix grid is easy enough if you only have a few addresses. But what if you have dozens of addresses? Enter Python, the GoogleMaps API, and the popular data-science library, Pandas. What we need to begin with is a dictionary of addresses. For each address, we want …" />
+
+        <meta property="og:site_name" content="Martin Noah" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Creating a Mileage Matrix"/>
+        <meta property="og:url" content="./creating-a-mileage-matrix.html"/>
+        <meta property="og:description" content="Creating a mileage matrix grid is easy enough if you only have a few addresses. But what if you have dozens of addresses? Enter Python, the GoogleMaps API, and the popular data-science library, Pandas. What we need to begin with is a dictionary of addresses. For each address, we want …"/>
+        <meta property="article:published_time" content="2018-07-14" />
+            <meta property="article:section" content="Blog" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:tag" content="googlemaps" />
+            <meta property="article:tag" content="pandas" />
+            <meta property="article:tag" content="dataframe" />
+            <meta property="article:author" content="Martin Noah" />
+            <meta property="og:image"
+                  content="./images/mileagematrix.png"/>
+
+    <meta name="twitter:dnt" content="on">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content=".">
+            <meta property="twitter:image"
+                  content="./images/mileagematrix.png"/>
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="./theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="./theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="./theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="./" class="navbar-brand">
+Martin Noah            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="./pages/about.html">
+                             About
+                          </a></li>
+                         <li><a href="./pages/contact.html">
+                             Contact
+                          </a></li>
+                        <li class="active">
+                            <a href="./category/blog.html">Blog</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="./creating-a-mileage-matrix.html"
+                       rel="bookmark"
+                       title="Permalink to Creating a Mileage Matrix">
+                        Creating a Mileage Matrix
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2018-07-14T00:00:00-04:00"> Sat 14 July 2018</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="./tag/python.html">python</a>
+        /
+	<a href="./tag/googlemaps.html">googlemaps</a>
+        /
+	<a href="./tag/pandas.html">pandas</a>
+        /
+	<a href="./tag/dataframe.html">dataframe</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Creating a mileage matrix grid is easy enough if you only have a few addresses.  But what if you have dozens of addresses?  Enter Python, the GoogleMaps API, and the popular data-science library, Pandas.</p>
+<p>What we need to begin with is a dictionary of addresses.  For each address, we want the distance from that address to all other addresses in the dictionary, including itself.  Our end result will be a dataframe that we can write to Excel and format and style as we wish.</p>
+<p>Let's start by importing the necessary packages we'll need.  You'll most likely need to pip install <code>googlemaps</code> and <code>pandas</code></p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">googlemaps</span>
+<span class="kn">import</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+</pre></div>
+
+
+<p>Let's create our dictionary of addresses, where the key is the simple name of the address which wil be displayed in the rows and columns of the dataframe, and the value is the street address.</p>
+<div class="highlight"><pre><span></span><span class="n">addys</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;White House&#39;</span><span class="p">:</span><span class="s1">&#39;1600 Pennsylvania Ave NW, Washington, DC 20500&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Empire St. Bldg&#39;</span><span class="p">:</span> <span class="s1">&#39;Empire State Building&#39;</span><span class="p">:</span><span class="s1">&#39;350 5th Ave, New York, NY 10118&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Niagara Falls&#39;</span><span class="p">:</span><span class="s1">&#39;Niagara Falls, NY 14303&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;PPG Arena&#39;</span><span class="p">:</span><span class="s1">&#39;1001 Fifth Avenue, Pittsburgh, PA 15219&#39;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Create the googlemaps object:</p>
+<div class="highlight"><pre><span></span><span class="n">gmaps</span> <span class="o">=</span> <span class="n">googlemaps</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;YOUR_OWN_KEY&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Create an empty array that will be fed the distance (in meters) </p>
+<div class="highlight"><pre><span></span><span class="n">addyMeters</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+
+
+<p>And then loop through all of our values/addresses in <code>addys</code>, append <code>addyMeters</code> so that it results in a two-dimensional array.</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">origin</span> <span class="ow">in</span> <span class="n">addys</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">addyMeters</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+</pre></div>
+
+
+<p>Loop through <code>addys</code> again to call the Google MAPS api for each destination address to calculate, and call the google MAP's <code>distance_matrix</code> method on the origin and destination addresses and assign it to the variable <code>directions</code>.</p>
+<div class="highlight"><pre><span></span>    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">destination</span> <span class="ow">in</span> <span class="n">addys</span><span class="p">:</span>
+        <span class="n">directions</span> <span class="o">=</span> <span class="n">gmaps</span><span class="o">.</span><span class="n">distance_matrix</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span> <span class="n">destination</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The <code>distance_matrix</code> method returns JSON data stored in our <code>directions</code> variable as a Python dictionary where we can access nested values by slicing.  </p>
+<pre>directions = {
+    'destination_addresses': ['1600 Pennsylvania Ave NW, Washington, DC 20500, USA'],
+    'origin_addresses': ['350 5th Ave, New York, NY 10118, USA'],
+    'rows': [{'elements': [{'distance': {'text': '372 km',
+             'value': <b>371866</b>}, 'duration': {'text': '3 hours 54 mins',
+             'value': 14037}, 'status': 'OK'}]}],
+    'status': 'OK',
+    }</pre>
+
+<p>What we want for our mileage matrix is the value in the 'distance' rows.  This value is in meters, so we have to convert it to miles, where one mile == 0.000621371 meters.  So we access the value in meters and multiply it by 0.000621371 and use <code>math.floor</code> to give us the nearest integer.</p>
+<div class="highlight"><pre><span></span>        <span class="k">try</span><span class="p">:</span>
+            <span class="n">meters</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">directions</span><span class="p">[</span><span class="s1">&#39;rows&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;elements&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;distance&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">0.000621371</span><span class="p">)</span>
+            <span class="n">addyMeters</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">meters</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">addyMeters</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Error with {0} and {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span><span class="n">destination</span><span class="p">))</span> 
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>To recap:</strong> we have our addys list which includes all of the addresses and now our two-dimensional array (list within a list) with all of the distances in miles.  </p>
+<p>We can now use Pandas to turn this into an easy to view data frame, and write it to an Excel file using Panda's ExcelWriter and the xlsxwriter engine.</p>
+<div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">addyMeters</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">addys</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">addys</span><span class="p">)</span>
+<span class="n">writer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s1">&#39;mileagematrix.xlsx&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;xlsxwriter&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Sheet1&#39;</span><span class="p">)</span>
+<span class="n">writer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Here is the result!</p>
+<p><img style="max-width: 100%; height:    auto;" src='/images/mileagematrix.png')></p>
+<p>Things to consider: Google Maps API has pretty strict usage quotas.  If you have dozens or hundreds of addresses, you may want to look at alternative solutions or use <code>time.sleep()</code> to slow down your requests to the API.</p>
+            </div>
+            <!-- /.entry-content -->
+    <hr />
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style">
+            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+            <a class="addthis_button_tweet"></a>
+            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    </div>
+    <!-- AddThis Button END -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'martinnoah'; // required: replace example with your forum shortname
+
+            var disqus_config = function () {
+                this.language = "english";
+
+                        this.page.identifier = '2018-07-14-creating-a-mileage-matrix';
+                        this.page.url = './creating-a-mileage-matrix.html';
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<div id="aboutme">
+    <p>
+      <strong>About Martin Noah</strong><br/>
+        Random tutorials and blog posts about Python, Excel, Web Development, and maybe some hockey (Go Pens!)
+    </p>
+</div><!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://twitter.com/MixMasterMartin"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+    <li class="list-group-item"><a href="https://www.facebook.com/martin.noah.98"><i class="fa fa-facebook-square fa-lg"></i> Facebook</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Tag Cloud -->
+<li class="list-group-item">
+  <a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+  <ul class="list-group " id="tags">
+    <li class="list-group-item tag-0">
+      <a href="./tag/python.html">python</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="./tag/raspberrypi.html">raspberrypi</a>
+    </li>
+    <li class="list-group-item tag-2">
+      <a href="./tag/blog.html">blog</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/surveillance.html">surveillance</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/ngrok.html">ngrok</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/pandas.html">pandas</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/excel.html">Excel</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/telegram.html">telegram</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/ffmpeg.html">ffmpeg</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/vba.html">vba</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/pelican.html">pelican</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/timelapse.html">timelapse</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/automation.html">automation</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/twilio.html">Twilio</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/pythonanywhere.html">pythonanywhere</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/googlemaps.html">googlemaps</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/windows.html">windows</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/dataframe.html">dataframe</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Tag Cloud -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2018 Martin Noah
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="./theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="./theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="./theme/js/respond.min.js"></script>
+
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'martinnoah'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-118771828-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b01709f0c3abefa"></script>
+</body>
+</html>

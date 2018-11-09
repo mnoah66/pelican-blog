@@ -27,6 +27,7 @@ TIMEZONE = 'America/New_York'
 PLUGIN_PATHS = ['C:/Users/mnoah/MartinBlog/themes/pelican-plugins', ]
 PLUGINS = ['i18n_subsites',
 			'share_post',
+            'tag_cloud'
 		]
 JINJA_ENVIRONMENT = {
     'extensions': ['jinja2.ext.i18n'],
@@ -36,7 +37,7 @@ JINJA_ENVIRONMENT = {
 #DISQUS_SITENAME = "<https://martinnoah.disqus.com>"
 DISQUS_SITENAME = "martinnoah"
 
-THEME = 'C:/Users/mnoah/MartinBlog/themes/pelican-themes/pelican-bootstrap3'
+THEME = 'C:/Users/mnoah/MartinBlog/themes/~/pelican-themes/pelican-bootstrap3'
 
 DEFAULT_LANG = 'English'
 
@@ -62,13 +63,15 @@ SOCIAL = (('Twitter', 'https://twitter.com/MixMasterMartin'),
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+RELATIVE_URLS = True
 
 GOOGLE_ANALYTICS = 'UA-118771828-1'
 
-SITELOGO = 'images/favicon.png'
-SITELOGO_SIZE = 32
-FAVICON = 'images/favicon.png'
+#SITELOGO = 'images/favicon.png'
+#SITELOGO_SIZE = 32
+#FAVICON = 'images/favicon.png'
+DISPLAY_TAGS_ON_SIDEBAR = True
+#DISPLAY_CATEGORIES_ON_SIDEBAR = True
 
 ADDTHIS_PROFILE = 'ra-5b01709f0c3abefa'
 
