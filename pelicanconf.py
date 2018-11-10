@@ -50,6 +50,8 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
+BANNER='images/numbers2.jpg'
+BOOTSTRAP_NAVBAR_INVERSE = True
 
 # Blogroll
 #LINKS = (('Pelican', 'http://getpelican.com/'),
