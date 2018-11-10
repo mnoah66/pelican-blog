@@ -36,7 +36,8 @@
 
 
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 
@@ -116,28 +117,16 @@ Martin Noah            </a>
                 </div>
             </article>
             <hr/>
-            <article>
-                <h2><a href="./raspberrypi-timelapse.html">Raspberry Pi Timelapse</a></h2>
-                <div class="summary"><p>The beauty of the Raspberry Pi is the millions of things you're able to do with it.  From a custom DIY webserver to a home surveillance system, from physical computing to the topic of this post: timelapse photography.  I became interested in the Raspberry Pi when it came time to …</p>
-                    <a class="btn btn-default btn-xs" href="./raspberrypi-timelapse.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2><a href="./windows-for-development.html">Windows for Development</a></h2>
-                <div class="summary"><p>I am a Windows user and I am not alone.  Over a third of developers use Windows as their platform according to the <a href="https://insights.stackoverflow.com/survey/2018/">2018 Stack Overflow Survey</a> and <em>almost</em> half of respondents report having Windows as their operating system.  Surprisingly, and yet not, as most tools and development environments <strong>heavily …</strong></p>
-                    <a class="btn btn-default btn-xs" href="./windows-for-development.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2><a href="./mypelicanblog.html">First Post - This Pelican Blog</a></h2>
-                <div class="summary"><p>When trying to figure out how to launch my first blog, I stumbled upon the vast options that are out there.  I realized that the Wordpress's and SquareSpace's that are out there were a little too modern, with some of their themes being a bit much.  I wanted something easy …</p>
-                    <a class="btn btn-default btn-xs" href="./mypelicanblog.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
 
+        <ul class="pagination">
+                <li class="prev disabled"><a href="#">&laquo;</a></li>
+                    <li class="active"><a
+                            href="./index.html">1</a></li>
+                    <li class=""><a
+                            href="./index2.html">2</a></li>
+                <li class="next"><a
+                        href="./index2.html">&raquo;</a></li>
+        </ul>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
@@ -168,28 +157,34 @@ Martin Noah            </a>
       <a href="./tag/python.html">python</a>
     </li>
     <li class="list-group-item tag-2">
-      <a href="./tag/raspberrypi.html">raspberrypi</a>
-    </li>
-    <li class="list-group-item tag-2">
       <a href="./tag/blog.html">blog</a>
     </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/surveillance.html">surveillance</a>
+    <li class="list-group-item tag-2">
+      <a href="./tag/raspberrypi.html">raspberrypi</a>
     </li>
     <li class="list-group-item tag-4">
-      <a href="./tag/ngrok.html">ngrok</a>
+      <a href="./tag/googlemaps.html">googlemaps</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/ffmpeg.html">ffmpeg</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/windows.html">windows</a>
     </li>
     <li class="list-group-item tag-4">
       <a href="./tag/pandas.html">pandas</a>
     </li>
     <li class="list-group-item tag-4">
-      <a href="./tag/excel.html">Excel</a>
+      <a href="./tag/twilio.html">Twilio</a>
     </li>
     <li class="list-group-item tag-4">
       <a href="./tag/telegram.html">telegram</a>
     </li>
     <li class="list-group-item tag-4">
-      <a href="./tag/ffmpeg.html">ffmpeg</a>
+      <a href="./tag/excel.html">Excel</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/automation.html">automation</a>
     </li>
     <li class="list-group-item tag-4">
       <a href="./tag/vba.html">vba</a>
@@ -198,25 +193,19 @@ Martin Noah            </a>
       <a href="./tag/pelican.html">pelican</a>
     </li>
     <li class="list-group-item tag-4">
-      <a href="./tag/timelapse.html">timelapse</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/automation.html">automation</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/twilio.html">Twilio</a>
+      <a href="./tag/dataframe.html">dataframe</a>
     </li>
     <li class="list-group-item tag-4">
       <a href="./tag/pythonanywhere.html">pythonanywhere</a>
     </li>
     <li class="list-group-item tag-4">
-      <a href="./tag/googlemaps.html">googlemaps</a>
+      <a href="./tag/ngrok.html">ngrok</a>
     </li>
     <li class="list-group-item tag-4">
-      <a href="./tag/windows.html">windows</a>
+      <a href="./tag/timelapse.html">timelapse</a>
     </li>
     <li class="list-group-item tag-4">
-      <a href="./tag/dataframe.html">dataframe</a>
+      <a href="./tag/surveillance.html">surveillance</a>
     </li>
   </ul>
 </li>

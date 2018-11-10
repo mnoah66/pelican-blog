@@ -12,13 +12,13 @@
 <link rel="canonical" href="../pages/contact.html">
 
         <meta name="author" content="Martin Noah" />
-        <meta name="description" content="If you&#39;d like to get in touch with me, check me out on Twitter or shoot me a message: Name Email address Your email is safe with me! Message Send $(&#39;#myForm&#39;).submit(function(e){ $(&#39;#exampleModal&#39;).modal(&#39;show&#39;); e.preventDefault(); $.ajax({ url:&#34;https://purring-dodo.prod.with-datafire.io/contact&#34;, type:&#39;post&#39;, data …" />
+        <meta name="description" content="If you&#39;d like to get in touch with me, check me out on Twitter or shoot me a message: Name Email address Your email is safe with me! Message Send Thank you × I&#39;ll reach out to you shortly! Close $(&#39;#myForm&#39;).submit(function(e){ $(&#39;#exampleModal&#39;).modal(&#39;show&#39;); e.preventDefault(); $.ajax({ url …" />
 
     <meta property="og:site_name" content="Martin Noah" />
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Contact"/>
     <meta property="og:url" content="../pages/contact.html"/>
-    <meta property="og:description" content="If you&#39;d like to get in touch with me, check me out on Twitter or shoot me a message: Name Email address Your email is safe with me! Message Send $(&#39;#myForm&#39;).submit(function(e){ $(&#39;#exampleModal&#39;).modal(&#39;show&#39;); e.preventDefault(); $.ajax({ url:&#34;https://purring-dodo.prod.with-datafire.io/contact&#34;, type:&#39;post&#39;, data …" />
+    <meta property="og:description" content="If you&#39;d like to get in touch with me, check me out on Twitter or shoot me a message: Name Email address Your email is safe with me! Message Send Thank you × I&#39;ll reach out to you shortly! Close $(&#39;#myForm&#39;).submit(function(e){ $(&#39;#exampleModal&#39;).modal(&#39;show&#39;); e.preventDefault(); $.ajax({ url …" />
         <meta property="og:image"
               content="../images/FuEA2MYH_400x400.jpg"/>
 
@@ -39,7 +39,8 @@
 
 
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 
@@ -102,10 +103,36 @@ Martin Noah            </a>
                     <input type="text" name="_gotcha" style="display:none" />
                     <input type="hidden" name="_next" value="https://martindnoah.com/index.html" />
                 </div>
+                <div class="g-recaptcha form-group" data-sitekey="6LeYF3EUAAAAAObkuXXTj4BpF2xpIsIt-CZTWMqo"></div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-lg" type="submit">Send</button>
                 </div>
             </form>
+
+<!-- Modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Thank you</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            I'll reach out to you shortly!
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript">
         $('#myForm').submit(function(e){
@@ -154,28 +181,34 @@ Martin Noah            </a>
       <a href="../tag/python.html">python</a>
     </li>
     <li class="list-group-item tag-2">
-      <a href="../tag/raspberrypi.html">raspberrypi</a>
-    </li>
-    <li class="list-group-item tag-2">
       <a href="../tag/blog.html">blog</a>
     </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/surveillance.html">surveillance</a>
+    <li class="list-group-item tag-2">
+      <a href="../tag/raspberrypi.html">raspberrypi</a>
     </li>
     <li class="list-group-item tag-4">
-      <a href="../tag/ngrok.html">ngrok</a>
+      <a href="../tag/googlemaps.html">googlemaps</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/ffmpeg.html">ffmpeg</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/windows.html">windows</a>
     </li>
     <li class="list-group-item tag-4">
       <a href="../tag/pandas.html">pandas</a>
     </li>
     <li class="list-group-item tag-4">
-      <a href="../tag/excel.html">Excel</a>
+      <a href="../tag/twilio.html">Twilio</a>
     </li>
     <li class="list-group-item tag-4">
       <a href="../tag/telegram.html">telegram</a>
     </li>
     <li class="list-group-item tag-4">
-      <a href="../tag/ffmpeg.html">ffmpeg</a>
+      <a href="../tag/excel.html">Excel</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/automation.html">automation</a>
     </li>
     <li class="list-group-item tag-4">
       <a href="../tag/vba.html">vba</a>
@@ -184,25 +217,19 @@ Martin Noah            </a>
       <a href="../tag/pelican.html">pelican</a>
     </li>
     <li class="list-group-item tag-4">
-      <a href="../tag/timelapse.html">timelapse</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/automation.html">automation</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/twilio.html">Twilio</a>
+      <a href="../tag/dataframe.html">dataframe</a>
     </li>
     <li class="list-group-item tag-4">
       <a href="../tag/pythonanywhere.html">pythonanywhere</a>
     </li>
     <li class="list-group-item tag-4">
-      <a href="../tag/googlemaps.html">googlemaps</a>
+      <a href="../tag/ngrok.html">ngrok</a>
     </li>
     <li class="list-group-item tag-4">
-      <a href="../tag/windows.html">windows</a>
+      <a href="../tag/timelapse.html">timelapse</a>
     </li>
     <li class="list-group-item tag-4">
-      <a href="../tag/dataframe.html">dataframe</a>
+      <a href="../tag/surveillance.html">surveillance</a>
     </li>
   </ul>
 </li>

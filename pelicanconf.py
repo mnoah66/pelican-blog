@@ -13,10 +13,10 @@ PATH = 'content'
 STATIC_PATHS = ['images', 'extra']
 
 # Tell Pelican to change the path to 'static/custom.css' in the output dir
-EXTRA_PATH_METADATA = {
-    'extra/custom.css': {'path': 'static/css/custom.css'},
-    'extra/custom.js': {'path': 'static/js/custom.js'}
-}
+#EXTRA_PATH_METADATA = {
+#    'extra/custom.css': {'path': 'static/css/custom.css'},
+#    'extra/custom.js': {'path': 'static/js/custom.js'}
+#}
 
 TWITTER_CARDS = True
 USE_OPEN_GRAPH = True
@@ -60,7 +60,7 @@ AUTHOR_FEED_RSS = None
 SOCIAL = (('Twitter', 'https://twitter.com/MixMasterMartin'),
           ('Facebook', 'https://www.facebook.com/martin.noah.98'),)
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 5
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
