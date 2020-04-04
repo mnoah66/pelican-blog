@@ -24,7 +24,7 @@ Draw the Command Button next to your data columns.  Your spreadsheet will now ch
 
 Finally, right-click on the button and select 'View Code.'  Copy and paste the below lines of code inbetween the 'Private Sub CommandButton1_Click()' and 'End Sub' lines.
 
-```visualbasic
+```python
 Dim sht As Worksheet
 Dim indicator As Boolean
 

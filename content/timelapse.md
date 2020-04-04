@@ -137,9 +137,8 @@ OpenShot is free, open-source video editor.  It's incredibly simple to use, espe
 
 <img style="max-width: 100%; height: 	auto;" src='/images/setup.jpeg')>
 
-A preview of the timelapse:
-<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src="https://player.vimeo.com/video/267403937" frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+The finished time lapse!:
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src="https://player.vimeo.com/video/339825595" frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+
 
 <br>
-
-Check back soon for the entire video!

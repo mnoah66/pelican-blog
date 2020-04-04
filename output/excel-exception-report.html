@@ -37,21 +37,23 @@
 
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="./theme/css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="./theme/css/bootstrap.flatly.min.css" type="text/css"/>
     <link href="./theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="./theme/css/pygments/native.css" rel="stylesheet">
+    <link href="./theme/css/pygments/friendly.css" rel="stylesheet">
     <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
+        <link href="./static/custom.css" rel="stylesheet">
 
 
 
 
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    
 </head>
 <body>
-
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -76,14 +78,14 @@ Martin Noah            </a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+              <li><a href="./archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
 </div> <!-- /.navbar -->
 
-<!-- Banner -->
-<!-- End Banner -->
+
 
 <!-- Content Container -->
 <div class="container">
@@ -131,30 +133,30 @@ Martin Noah            </a>
 <p>Draw the Command Button next to your data columns.  Your spreadsheet will now change to Design Mode.  Right click on the newly place command button, then hover over 'CommandButton Object' then click Edit to modify the label of the button.  I changed mine to "Submit" because eventually this will be used to email the entire workbook.</p>
 <p><img style="max-width: 400px;width:100%; height:  auto;" src='/images/submitbutton.png'></p>
 <p>Finally, right-click on the button and select 'View Code.'  Copy and paste the below lines of code inbetween the 'Private Sub CommandButton1_Click()' and 'End Sub' lines.</p>
-<div class="highlight"><pre><span></span>Dim sht As Worksheet
-Dim indicator As Boolean
+<div class="highlight"><pre><span></span><span class="n">Dim</span> <span class="n">sht</span> <span class="n">As</span> <span class="n">Worksheet</span>
+<span class="n">Dim</span> <span class="n">indicator</span> <span class="n">As</span> <span class="n">Boolean</span>
 
-Set sht = ThisWorkbook.Worksheets(&quot;Sheet1&quot;)
-indicator = True
-lastrow = sht.Cells(Rows.Count, &quot;A&quot;).End(xlUp).Row
+<span class="n">Set</span> <span class="n">sht</span> <span class="o">=</span> <span class="n">ThisWorkbook</span><span class="o">.</span><span class="n">Worksheets</span><span class="p">(</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">)</span>
+<span class="n">indicator</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">lastrow</span> <span class="o">=</span> <span class="n">sht</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">Rows</span><span class="o">.</span><span class="n">Count</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">End</span><span class="p">(</span><span class="n">xlUp</span><span class="p">)</span><span class="o">.</span><span class="n">Row</span>
 
-    &#39; Start at the second row, go until the last row that contains data
-    For x = 2 To lastrow 
-        &#39; If the amount value is less than $100.00 AND there is no explanation
-        &#39; Turn the exaplanation cell red as a visual indicator and change the indicator variable to false
-        If sht.Cells(x, 1).Value &lt; 100 And sht.Cells(x, 2).Value = &quot;&quot; Then
-            sht.Cells(x, 2).Interior.ColorIndex = 22
-            indicator = False
-        End If
-    Next x
+    <span class="s1">&#39; Start at the second row, go until the last row that contains data</span>
+    <span class="n">For</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">To</span> <span class="n">lastrow</span> 
+        <span class="s1">&#39; If the amount value is less than $100.00 AND there is no explanation</span>
+        <span class="s1">&#39; Turn the exaplanation cell red as a visual indicator and change the indicator variable to false</span>
+        <span class="n">If</span> <span class="n">sht</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">Value</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="n">And</span> <span class="n">sht</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">Value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="n">Then</span>
+            <span class="n">sht</span><span class="o">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">Interior</span><span class="o">.</span><span class="n">ColorIndex</span> <span class="o">=</span> <span class="mi">22</span>
+            <span class="n">indicator</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">End</span> <span class="n">If</span>
+    <span class="n">Next</span> <span class="n">x</span>
 
-    &#39; If any of the cells are &lt; $100 and there is no comment, prompt the user to enter an explanation.
-    If indicator = False Then
-        MsgBox &quot;One or more explanations is required before submission&quot;
-    Else
-        &#39; Submit to ....
-        MsgBox &quot;SUCCESS! Submitted to A/R!&quot;
-    End If
+    <span class="s1">&#39; If any of the cells are &lt; $100 and there is no comment, prompt the user to enter an explanation.</span>
+    <span class="n">If</span> <span class="n">indicator</span> <span class="o">=</span> <span class="bp">False</span> <span class="n">Then</span>
+        <span class="n">MsgBox</span> <span class="s2">&quot;One or more explanations is required before submission&quot;</span>
+    <span class="n">Else</span>
+        <span class="s1">&#39; Submit to ....</span>
+        <span class="n">MsgBox</span> <span class="s2">&quot;SUCCESS! Submitted to A/R!&quot;</span>
+    <span class="n">End</span> <span class="n">If</span>
 </pre></div>
 
 
@@ -208,12 +210,7 @@ lastrow = sht.Cells(Rows.Count, &quot;A&quot;).End(xlUp).Row
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
-<div id="aboutme">
-    <p>
-      <strong>About Martin Noah</strong><br/>
-        Random tutorials and blog posts about Python, Excel, Web Development, and maybe some hockey (Go Pens!)
-    </p>
-</div><!-- Sidebar -->
+<!-- Sidebar -->
 <section class="well well-sm">
   <ul class="list-group list-group-flush">
 
@@ -221,69 +218,53 @@ lastrow = sht.Cells(Rows.Count, &quot;A&quot;).End(xlUp).Row
 <li class="list-group-item">
   <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
   <ul class="list-group" id="social">
-    <li class="list-group-item"><a href="https://twitter.com/MixMasterMartin"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
-    <li class="list-group-item"><a href="https://www.facebook.com/martin.noah.98"><i class="fa fa-facebook-square fa-lg"></i> Facebook</a></li>
+    <li class="list-group-item"><a href="https://twitter.com/MixMasterMartin"><i class="fab fa-twitter"></i> Twitter</a></li>
+    <li class="list-group-item"><a href="https://linkedin.com/in/martin-noah"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+    <li class="list-group-item"><a href="https://www.github.com/mnoah66"><i class="fab fa-github"></i> GitHub</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Social -->
 
+<!-- Sidebar/Recent Posts -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+  <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="./what-do-angle-brackets-mean-to-you.html">What Do Angle Brackets Mean to You?</a></li>
+    <li class="list-group-item"><a href="./excel-addin-date-range.html">Addin to Create A Date Range</a></li>
+    <li class="list-group-item"><a href="./excel-attendance.html">Tracking Weekly Attendance in Excel with a Custom Function</a></li>
+    <li class="list-group-item"><a href="./pandas-excel-attendance.html">Tracking Excel Attendance with Pandas</a></li>
+    <li class="list-group-item"><a href="./google-maps-county-border.html">Customizing the Google Maps JavaScript API</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Recent Posts -->
+
 <!-- Sidebar/Tag Cloud -->
 <li class="list-group-item">
-  <a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
-  <ul class="list-group " id="tags">
-    <li class="list-group-item tag-0">
-      <a href="./tag/python.html">python</a>
+  <a href="./tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+  <ul class="list-group list-inline tagcloud" id="tags">
+    <li class="list-group-item tag-3">
+      <a href="./tag/blog.html">blog</a>
     </li>
     <li class="list-group-item tag-2">
-      <a href="./tag/blog.html">blog</a>
+      <a href="./tag/excel.html">excel</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/family.html">family</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="./tag/googlemaps.html">googlemaps</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="./tag/pandas.html">pandas</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="./tag/python.html">python</a>
     </li>
     <li class="list-group-item tag-2">
       <a href="./tag/raspberrypi.html">raspberrypi</a>
     </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/pythonanywhere.html">pythonanywhere</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/pandas.html">pandas</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/excel.html">Excel</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/windows.html">windows</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/ffmpeg.html">ffmpeg</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/timelapse.html">timelapse</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/dataframe.html">dataframe</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/vba.html">vba</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/ngrok.html">ngrok</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/googlemaps.html">googlemaps</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/twilio.html">Twilio</a>
-    </li>
-    <li class="list-group-item tag-4">
+    <li class="list-group-item tag-3">
       <a href="./tag/surveillance.html">surveillance</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/telegram.html">telegram</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/pelican.html">pelican</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/automation.html">automation</a>
     </li>
   </ul>
 </li>
@@ -300,10 +281,14 @@ lastrow = sht.Cells(Rows.Count, &quot;A&quot;).End(xlUp).Row
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2018 Martin Noah
+         <div class="col-xs-10">&copy; 2019 Martin Noah
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.english"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.english">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
       </div>
    </div>
@@ -316,8 +301,14 @@ lastrow = sht.Cells(Rows.Count, &quot;A&quot;).End(xlUp).Row
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="./theme/js/respond.min.js"></script>
 
+<!-- Google Recaptcha -->
+<script src='https://www.google.com/recaptcha/api.js'></script>
 
+
+
+<!--
     <script src="./theme/js/bodypadding.js"></script>
+-->
     <!-- Disqus -->
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -354,5 +345,7 @@ lastrow = sht.Cells(Rows.Count, &quot;A&quot;).End(xlUp).Row
 
         <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b01709f0c3abefa"></script>
+
+
 </body>
 </html>

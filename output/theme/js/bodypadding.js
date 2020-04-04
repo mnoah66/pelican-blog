@@ -1,3 +1,3 @@
 $(document).ready(function(){
-    $('body').css('padding-top', $('.navbar').height()+'px');
+    $('body').css('padding-top', $('.navbar').height() +'px');
 });

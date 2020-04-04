@@ -12,13 +12,13 @@
 <link rel="canonical" href="../pages/contact.html">
 
         <meta name="author" content="Martin Noah" />
-        <meta name="description" content="If you&#39;d like to get in touch with me, check me out on Twitter or shoot me a message: Name Email address Your email is safe with me! Message Send Thank you × I&#39;ll reach out to you shortly! Close $(&#39;#myForm&#39;).submit(function(e){ $(&#39;#exampleModal&#39;).modal(&#39;show&#39;); e.preventDefault(); $.ajax({ url …" />
+        <meta name="description" content="If you&#39;d like to get in touch with me, check me out on Twitter or shoot me a message: Name Email address Your email is safe with me! Message Send Thank you × I&#39;ll reach out to you shortly! Close function myFunc() { if (grecaptcha.getResponse() === &#39;&#39;) { alert(&#39;Please check the recaptcha&#39;); return …" />
 
     <meta property="og:site_name" content="Martin Noah" />
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Contact"/>
     <meta property="og:url" content="../pages/contact.html"/>
-    <meta property="og:description" content="If you&#39;d like to get in touch with me, check me out on Twitter or shoot me a message: Name Email address Your email is safe with me! Message Send Thank you × I&#39;ll reach out to you shortly! Close $(&#39;#myForm&#39;).submit(function(e){ $(&#39;#exampleModal&#39;).modal(&#39;show&#39;); e.preventDefault(); $.ajax({ url …" />
+    <meta property="og:description" content="If you&#39;d like to get in touch with me, check me out on Twitter or shoot me a message: Name Email address Your email is safe with me! Message Send Thank you × I&#39;ll reach out to you shortly! Close function myFunc() { if (grecaptcha.getResponse() === &#39;&#39;) { alert(&#39;Please check the recaptcha&#39;); return …" />
         <meta property="og:image"
               content="../images/FuEA2MYH_400x400.jpg"/>
 
@@ -30,21 +30,23 @@
 
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="../theme/css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="../theme/css/bootstrap.flatly.min.css" type="text/css"/>
     <link href="../theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="../theme/css/pygments/native.css" rel="stylesheet">
+    <link href="../theme/css/pygments/friendly.css" rel="stylesheet">
     <link rel="stylesheet" href="../theme/css/style.css" type="text/css"/>
+        <link href="../static/custom.css" rel="stylesheet">
 
 
 
 
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    
 </head>
 <body>
-
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -69,14 +71,14 @@ Martin Noah            </a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+              <li><a href="../archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
 </div> <!-- /.navbar -->
 
-<!-- Banner -->
-<!-- End Banner -->
+
 
 <!-- Content Container -->
 <div class="container">
@@ -87,79 +89,99 @@ Martin Noah            </a>
         
         <div class="entry-content">
             <p>If you'd like to get in touch with me, check me out on <a href="https://twitter.com/MixMasterMartin">Twitter</a> or shoot me a message:</p>
-<form id="myForm">
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Name</label>
-                        <input required type="text" class="form-control" id="fromName" placeholder="Enter name" name="name">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="fromEmail" aria-describedby="emailHelp" placeholder="Enter email" name="emailAddress" required>
-                        <small id="emailHelp" class="form-text text-muted">Your email is safe with me!</small>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Message</label>
-                        <textarea required class="form-control" id="fromMessage" rows="3" name="message"></textarea>
-                    <input type="text" name="_gotcha" style="display:none" />
-                    <input type="hidden" name="_next" value="https://martindnoah.com/index.html" />
-                </div>
-                <div class="g-recaptcha form-group" data-sitekey="6LeYF3EUAAAAAObkuXXTj4BpF2xpIsIt-CZTWMqo"></div>
-                <div class="form-group">
-                    <button class="btn btn-primary btn-lg" type="submit">Send</button>
-                </div>
-            </form>
+<form id="myForm" onsubmit=";myFunc(); return false;">
+    <div class="form-group">
+        <label for="formGroupExampleInput">Name</label>
+        <input required type="text" class="form-control" id="fromName" placeholder="Enter name" name="name">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="fromEmail" aria-describedby="emailHelp" placeholder="Enter email" name="emailAddress" required>
+        <small id="emailHelp" class="form-text text-muted">Your email is safe with me!</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Message</label>
+        <textarea required class="form-control" id="fromMessage" rows="3" name="message"></textarea>
+        <input type="text" name="_gotcha" style="display:none" />
+        <input type="hidden" name="_next" value="https://martindnoah.com/index.html" />
+    </div>
+    <div class="g-recaptcha form-group" data-sitekey="6LeYF3EUAAAAAObkuXXTj4BpF2xpIsIt-CZTWMqo"></div>
+    <div class="form-group">
+        <button class="btn btn-primary btn-lg" type="submit">Send</button>
+    </div>
+</form>
 
 <!-- Modal -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Thank you</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            I'll reach out to you shortly!
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Close</button>
-          </div>
-        </div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thank you</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        I'll reach out to you shortly!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" onclick="window.location.replace('https://martinnoah.com');">Close</button>
       </div>
     </div>
-
-<script src="vendor/jquery/jquery.min.js"></script>
-
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </div>
+</div>
 
 <script type="text/javascript">
-        $('#myForm').submit(function(e){
-            $('#exampleModal').modal('show');
-            e.preventDefault();
-            $.ajax({
-                url:"https://purring-dodo.prod.with-datafire.io/contact",
-                type:'post',
-                data:$('#myForm').serialize(),
-                success:function(){
-                    $('#myForm :input').val('');
-                    //whatever you wanna do after the form is successfully submitted
-                }
-            });
-        });
-    </script>
+function myFunc() {
+    if (grecaptcha.getResponse() === '') {                            
+      alert('Please check the recaptcha');
+      return;
+    }
+    $("#exampleModal").modal("show");
+    //e.preventDefault();
+    $.ajax({
+        url: "https://black-clownfish.prod.with-datafire.io/contact",
+        type: "post",
+        data: $("#myForm").serialize(),
+    success: function() {
+        //$("#myForm :input").val("");
+        //window.location.replace("https://martinnoah.com");
+        //$("#exampleModal").modal("show");
+    //whatever you wanna do after the form is successfully submitted
+  }
+});
+};
+</script>
+
+<!-- attr to SO uer ryanlb: https://stackoverflow.com/questions/31017261/require-user-to-click-googles-new-recaptcha-before-form-submission -->
+
+<!--
+<script type="text/javascript">
+  var form = document.getElementById('myForm');
+  form.addEventListener("click", function(event){
+    if (grecaptcha.getResponse() === '') {                            
+      event.preventDefault();
+      alert('Please check the recaptcha');
+    } else {
+      $.ajax({
+      url: "https://purring-dodo.prod.with-datafire.io/contact",
+      type: "post",
+      data: $("#myForm").serialize(),
+    success: function() {
+      $("#myForm :input").val("");
+    //whatever you wanna do after the form is successfully submitted
+    }
+  }
+, false);
+</script>
+-->
         </div>
     </section>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
-<div id="aboutme">
-    <p>
-      <strong>About Martin Noah</strong><br/>
-        Random tutorials and blog posts about Python, Excel, Web Development, and maybe some hockey (Go Pens!)
-    </p>
-</div><!-- Sidebar -->
+<!-- Sidebar -->
 <section class="well well-sm">
   <ul class="list-group list-group-flush">
 
@@ -167,69 +189,53 @@ Martin Noah            </a>
 <li class="list-group-item">
   <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
   <ul class="list-group" id="social">
-    <li class="list-group-item"><a href="https://twitter.com/MixMasterMartin"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
-    <li class="list-group-item"><a href="https://www.facebook.com/martin.noah.98"><i class="fa fa-facebook-square fa-lg"></i> Facebook</a></li>
+    <li class="list-group-item"><a href="https://twitter.com/MixMasterMartin"><i class="fab fa-twitter"></i> Twitter</a></li>
+    <li class="list-group-item"><a href="https://linkedin.com/in/martin-noah"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+    <li class="list-group-item"><a href="https://www.github.com/mnoah66"><i class="fab fa-github"></i> GitHub</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Social -->
 
+<!-- Sidebar/Recent Posts -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+  <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="../what-do-angle-brackets-mean-to-you.html">What Do Angle Brackets Mean to You?</a></li>
+    <li class="list-group-item"><a href="../excel-addin-date-range.html">Addin to Create A Date Range</a></li>
+    <li class="list-group-item"><a href="../excel-attendance.html">Tracking Weekly Attendance in Excel with a Custom Function</a></li>
+    <li class="list-group-item"><a href="../pandas-excel-attendance.html">Tracking Excel Attendance with Pandas</a></li>
+    <li class="list-group-item"><a href="../google-maps-county-border.html">Customizing the Google Maps JavaScript API</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Recent Posts -->
+
 <!-- Sidebar/Tag Cloud -->
 <li class="list-group-item">
-  <a href="../"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
-  <ul class="list-group " id="tags">
-    <li class="list-group-item tag-0">
-      <a href="../tag/python.html">python</a>
+  <a href="../tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+  <ul class="list-group list-inline tagcloud" id="tags">
+    <li class="list-group-item tag-3">
+      <a href="../tag/blog.html">blog</a>
     </li>
     <li class="list-group-item tag-2">
-      <a href="../tag/blog.html">blog</a>
+      <a href="../tag/excel.html">excel</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="../tag/family.html">family</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="../tag/googlemaps.html">googlemaps</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="../tag/pandas.html">pandas</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="../tag/python.html">python</a>
     </li>
     <li class="list-group-item tag-2">
       <a href="../tag/raspberrypi.html">raspberrypi</a>
     </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/pythonanywhere.html">pythonanywhere</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/pandas.html">pandas</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/excel.html">Excel</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/windows.html">windows</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/ffmpeg.html">ffmpeg</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/timelapse.html">timelapse</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/dataframe.html">dataframe</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/vba.html">vba</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/ngrok.html">ngrok</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/googlemaps.html">googlemaps</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/twilio.html">Twilio</a>
-    </li>
-    <li class="list-group-item tag-4">
+    <li class="list-group-item tag-3">
       <a href="../tag/surveillance.html">surveillance</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/telegram.html">telegram</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/pelican.html">pelican</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="../tag/automation.html">automation</a>
     </li>
   </ul>
 </li>
@@ -246,10 +252,14 @@ Martin Noah            </a>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2018 Martin Noah
+         <div class="col-xs-10">&copy; 2019 Martin Noah
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.english"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.english">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
       </div>
    </div>
@@ -262,8 +272,14 @@ Martin Noah            </a>
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="../theme/js/respond.min.js"></script>
 
+<!-- Google Recaptcha -->
+<script src='https://www.google.com/recaptcha/api.js'></script>
 
+
+
+<!--
     <script src="../theme/js/bodypadding.js"></script>
+-->
     <!-- Disqus -->
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -296,6 +312,8 @@ Martin Noah            </a>
         })();
     </script>
     <!-- End Google Analytics Code -->
+
+
 
 
 </body>

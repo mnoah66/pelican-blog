@@ -5,6 +5,7 @@ category: Blog
 Tags: python, pythonanywhere, telegram
 share_post:true
 og_image:images/garbagetwittercard.png
+Summary: Is today a recycling day?  A simple automated way to remind yourself.
 
 ## Is Today a Recyling Day?
 

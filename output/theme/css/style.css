@@ -183,7 +183,7 @@ figure.floatcenter, .align-center {
 }
 
 #banner .copy {
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.7);
+    background: none repeat scroll 0 0 rgba(44, 62, 79, 0.9);
     display: inline;
     float: left;
     max-width: 600px;

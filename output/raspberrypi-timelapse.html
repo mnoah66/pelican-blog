@@ -38,21 +38,23 @@
 
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="./theme/css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="./theme/css/bootstrap.flatly.min.css" type="text/css"/>
     <link href="./theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="./theme/css/pygments/native.css" rel="stylesheet">
+    <link href="./theme/css/pygments/friendly.css" rel="stylesheet">
     <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
+        <link href="./static/custom.css" rel="stylesheet">
 
 
 
 
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    
 </head>
 <body>
-
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -77,14 +79,14 @@ Martin Noah            </a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+              <li><a href="./archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
 </div> <!-- /.navbar -->
 
-<!-- Banner -->
-<!-- End Banner -->
+
 
 <!-- Content Container -->
 <div class="container">
@@ -231,10 +233,9 @@ Martin Noah            </a>
 <h2>OpenShot</h2>
 <p>OpenShot is free, open-source video editor.  It's incredibly simple to use, especially for newbies, and it's built using Python, to boot!  Head on over to <a href="https://openshot.org">OpenShot.org</a> and download the newest version.  It has a tutorial once you launch it, and there are some great video tutorials on YouTube.  For my project, I'll add some simple fade-in/fade-outs, as well as some zooming and panning to give my timelapse the illusion that the camera was on a track.  You can also add titles, music, still images, and so on.</p>
 <p><img style="max-width: 100%; height:    auto;" src='/images/setup.jpeg')></p>
-<p>A preview of the timelapse:
-<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src="https://player.vimeo.com/video/267403937" frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></p>
+<p>The finished time lapse!:
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src="https://player.vimeo.com/video/339825595" frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></p>
 <p><br></p>
-<p>Check back soon for the entire video!</p>
             </div>
             <!-- /.entry-content -->
     <hr />
@@ -281,12 +282,7 @@ Martin Noah            </a>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
-<div id="aboutme">
-    <p>
-      <strong>About Martin Noah</strong><br/>
-        Random tutorials and blog posts about Python, Excel, Web Development, and maybe some hockey (Go Pens!)
-    </p>
-</div><!-- Sidebar -->
+<!-- Sidebar -->
 <section class="well well-sm">
   <ul class="list-group list-group-flush">
 
@@ -294,69 +290,53 @@ Martin Noah            </a>
 <li class="list-group-item">
   <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
   <ul class="list-group" id="social">
-    <li class="list-group-item"><a href="https://twitter.com/MixMasterMartin"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
-    <li class="list-group-item"><a href="https://www.facebook.com/martin.noah.98"><i class="fa fa-facebook-square fa-lg"></i> Facebook</a></li>
+    <li class="list-group-item"><a href="https://twitter.com/MixMasterMartin"><i class="fab fa-twitter"></i> Twitter</a></li>
+    <li class="list-group-item"><a href="https://linkedin.com/in/martin-noah"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+    <li class="list-group-item"><a href="https://www.github.com/mnoah66"><i class="fab fa-github"></i> GitHub</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Social -->
 
+<!-- Sidebar/Recent Posts -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+  <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="./what-do-angle-brackets-mean-to-you.html">What Do Angle Brackets Mean to You?</a></li>
+    <li class="list-group-item"><a href="./excel-addin-date-range.html">Addin to Create A Date Range</a></li>
+    <li class="list-group-item"><a href="./excel-attendance.html">Tracking Weekly Attendance in Excel with a Custom Function</a></li>
+    <li class="list-group-item"><a href="./pandas-excel-attendance.html">Tracking Excel Attendance with Pandas</a></li>
+    <li class="list-group-item"><a href="./google-maps-county-border.html">Customizing the Google Maps JavaScript API</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Recent Posts -->
+
 <!-- Sidebar/Tag Cloud -->
 <li class="list-group-item">
-  <a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
-  <ul class="list-group " id="tags">
-    <li class="list-group-item tag-0">
-      <a href="./tag/python.html">python</a>
+  <a href="./tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+  <ul class="list-group list-inline tagcloud" id="tags">
+    <li class="list-group-item tag-3">
+      <a href="./tag/blog.html">blog</a>
     </li>
     <li class="list-group-item tag-2">
-      <a href="./tag/blog.html">blog</a>
+      <a href="./tag/excel.html">excel</a>
+    </li>
+    <li class="list-group-item tag-4">
+      <a href="./tag/family.html">family</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="./tag/googlemaps.html">googlemaps</a>
+    </li>
+    <li class="list-group-item tag-3">
+      <a href="./tag/pandas.html">pandas</a>
+    </li>
+    <li class="list-group-item tag-1">
+      <a href="./tag/python.html">python</a>
     </li>
     <li class="list-group-item tag-2">
       <a href="./tag/raspberrypi.html">raspberrypi</a>
     </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/pythonanywhere.html">pythonanywhere</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/pandas.html">pandas</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/excel.html">Excel</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/windows.html">windows</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/ffmpeg.html">ffmpeg</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/timelapse.html">timelapse</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/dataframe.html">dataframe</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/vba.html">vba</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/ngrok.html">ngrok</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/googlemaps.html">googlemaps</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/twilio.html">Twilio</a>
-    </li>
-    <li class="list-group-item tag-4">
+    <li class="list-group-item tag-3">
       <a href="./tag/surveillance.html">surveillance</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/telegram.html">telegram</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/pelican.html">pelican</a>
-    </li>
-    <li class="list-group-item tag-4">
-      <a href="./tag/automation.html">automation</a>
     </li>
   </ul>
 </li>
@@ -373,10 +353,14 @@ Martin Noah            </a>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2018 Martin Noah
+         <div class="col-xs-10">&copy; 2019 Martin Noah
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.english"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.english">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
       </div>
    </div>
@@ -389,8 +373,14 @@ Martin Noah            </a>
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="./theme/js/respond.min.js"></script>
 
+<!-- Google Recaptcha -->
+<script src='https://www.google.com/recaptcha/api.js'></script>
 
+
+
+<!--
     <script src="./theme/js/bodypadding.js"></script>
+-->
     <!-- Disqus -->
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -427,5 +417,7 @@ Martin Noah            </a>
 
         <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b01709f0c3abefa"></script>
+
+
 </body>
 </html>
